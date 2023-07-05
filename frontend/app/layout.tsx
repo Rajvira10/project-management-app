@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import dynamic from "next/dynamic";
 import AppolloClient from "@/components/ApolloClient";
-import AddClientModal from "@/components/AddClientModal";
 
 const DynamicBootstrap = dynamic(
   () => require("bootstrap/dist/js/bootstrap.min.js"),
@@ -29,10 +28,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AppolloClient>
           <Header />
-          <div className="container">
-            <AddClientModal></AddClientModal>
-            {children}
-          </div>
+          {children}
         </AppolloClient>
       </body>
     </html>

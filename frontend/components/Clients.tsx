@@ -9,7 +9,12 @@ import Spinner from "./Spinner";
 const Clients = ({}) => {
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
-  if (loading) return <Spinner />;
+  if (loading)
+    return (
+      <div className="mt-5">
+        <Spinner />
+      </div>
+    );
   if (error) return <div>Something went wrong</div>;
 
   const clients = data.clients as Client[];
