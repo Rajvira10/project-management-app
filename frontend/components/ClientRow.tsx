@@ -1,5 +1,6 @@
 import { DELETE_CLIENT } from "@/graphql/mutations/ClientMutations";
 import { GET_CLIENTS } from "@/graphql/queries/ClientQueries";
+import { GET_PROJECTS } from "@/graphql/queries/ProjectQueries";
 import { Client } from "@/types/Client";
 import { useMutation } from "@apollo/client";
 import { FC } from "react";
@@ -12,22 +13,22 @@ interface ClientRowProps {
 const ClientRow: FC<ClientRowProps> = ({ client }) => {
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
-    // refetchQueries: [{ query: GET_CLIENTS }],
-    update(cache, { data: { deleteClient } }) {
-      // @ts-ignore
-      const { clients } = cache.readQuery({
-        query: GET_CLIENTS,
-      });
+    refetchQueries: [{ query: GET_CLIENTS }, { query: GET_PROJECTS }],
+    // update(cache, { data: { deleteClient } }) {
+    //   // @ts-ignore
+    //   const { clients } = cache.readQuery({
+    //     query: GET_CLIENTS,
+    //   });
 
-      cache.writeQuery({
-        query: GET_CLIENTS,
-        data: {
-          clients: clients.filter(
-            (client: Client) => client.id !== deleteClient.id
-          ),
-        },
-      });
-    },
+    //   cache.writeQuery({
+    //     query: GET_CLIENTS,
+    //     data: {
+    //       clients: clients.filter(
+    //         (client: Client) => client.id !== deleteClient.id
+    //       ),
+    //     },
+    //   });
+    // },
   });
 
   return (

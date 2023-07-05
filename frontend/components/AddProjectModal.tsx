@@ -33,7 +33,7 @@ const AddProjectModal = ({}) => {
 
   if (loading) return null;
 
-  if (error) console.log(error);
+  if (error) return <div>Something went wrong</div>;
 
   const clients = data.clients as Client[];
 
