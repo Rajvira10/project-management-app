@@ -1,5 +1,6 @@
 "use client";
 import ClientInfo from "@/components/ClientInfo";
+import DeleteProjectButton from "@/components/DeleteProjectButton";
 import Spinner from "@/components/Spinner";
 import { GET_PROJECT } from "@/graphql/queries/ProjectQueries";
 import { ProjectType } from "@/types/Project";
@@ -33,6 +34,8 @@ const Project = ({ params }: any) => {
           <p className="lead">{data.project.status}</p>
 
           <ClientInfo client={data.project.client} />
+
+          <DeleteProjectButton projectId={data.project.id} />
         </div>
       )}
     </>
