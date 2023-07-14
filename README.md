@@ -1,5 +1,5 @@
 # project-management-app
-A NextJs MERN Stack with GraphQL app for project management
+A NextJs MERN Stack GraphQL app for project management
 
 ## Tech Stack
 1. NextJs
